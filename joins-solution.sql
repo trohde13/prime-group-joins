@@ -101,6 +101,15 @@
 
 -- 8.  What is the total available on-hand quantity of diet pepsi?
 
+    SELECT SUM("warehouse_product".on_hand)
+    FROM "warehouse_product"
+    JOIN "products" ON "products".id = "warehouse_product".product_id
+    WHERE "products".description = 'diet pepsi';
+
+    Results:
+    92
+
+    --alternatively, this produces the product description next to available on-hand quantity:
     SELECT SUM(on_hand), "products".description
     FROM "warehouse_product"
     JOIN "products" ON "products".id = "warehouse_product".product_id
