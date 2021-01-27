@@ -1,4 +1,4 @@
-- 1.  Get all customers and their addresses.
+-- 1.  Get all customers and their addresses.
 
     SELECT *
     FROM "customers"
@@ -12,7 +12,7 @@
     4	Lucy	Liu	6	934 Superstar Ave	Portland	OR	99999	business	4
     4	Lucy	Liu	5	3 Charles Dr	Los Angeles	CA	00000	home	4
 
-- 2.  Get all orders and their line items (orders, quantity and product).
+-- 2.  Get all orders and their line items (orders, quantity and product).
 
     SELECT "products".description, "orders".order_date, "line_items".quantity
     FROM "products"
@@ -47,7 +47,7 @@
     lysol	2012-09-23	6
     cheetos	2012-09-23	9
 
-- 3.  Which warehouses have cheetos?
+-- 3.  Which warehouses have cheetos?
 
     SELECT "warehouse".warehouse, "products".description
     FROM "warehouse"
@@ -58,7 +58,7 @@
     Results:
     delta	cheetos
 
-- 4.  Which warehouses have diet pepsi?
+-- 4.  Which warehouses have diet pepsi?
 
     SELECT "warehouse".warehouse, "products".description
     FROM "warehouse"
@@ -72,9 +72,8 @@
     gamma	diet pepsi
 
 
-- 5.  Get the number of orders for each customer. 
-        NOTE: It is OK if those without orders are not included in results.
-
+-- 5.  Get the number of orders for each customer. 
+ 
     SELECT COUNT("orders"), "customers".last_name, "customers".first_name
     FROM "customers"
     JOIN "addresses" ON "customers".id = "addresses".customer_id
@@ -86,21 +85,21 @@
     1	Darwin	Charles
     5	Bonet	Lisa
 
-- 6.  How many customers do we have?
+-- 6.  How many customers do we have?
 
     SELECT COUNT(*) FROM "customers";
 
     Results: 
     4
 
-- 7.  How many products do we carry?
+-- 7.  How many products do we carry?
 
     SELECT COUNT(*) FROM "products";
 
     Results:
     7
 
-- 8.  What is the total available on-hand quantity of diet pepsi?
+-- 8.  What is the total available on-hand quantity of diet pepsi?
 
     SELECT SUM(on_hand), "products".description
     FROM "warehouse_product"
@@ -113,10 +112,3 @@
     88	diet pepsi
     1	diet pepsi  
 
-##Stretch
-## Stretch
-9. How much was the total cost for each order?
-10. How much has each customer spent in total?
-11. How much has each customer spent in total? 
-    Customers who have spent $0 should still show up in the table. 
-    It should say 0, not NULL (research coalesce).
